@@ -10,9 +10,16 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    @IBAction func nextViewButtonPressed(_ sender: Any) {
+        print("Button Pressed")
+        self.performSegue(withIdentifier: "CameraViewSegue", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // testing
+        print("View has loaded")
     }
 
 

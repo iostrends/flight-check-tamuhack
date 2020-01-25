@@ -89,6 +89,21 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="7Jt-NG-Vb5">
+            <objects>
+                <viewController id="eMz-a5-jwP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Mw-iu-g3f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="lsC-8v-jJv"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gFl-gi-wTv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1457" y="-668"/>
+        </scene>
         <!--Check-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -108,6 +123,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpk-jG-WsP">
+                                <rect key="frame" x="342" y="96" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Scan"/>
+                                <connections>
+                                    <action selector="nextViewButtonPressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Yld-em-7Yj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -119,6 +142,9 @@
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Check" image="checkmark.circle" catalog="system" id="cPa-gy-q4n"/>
+                    <connections>
+                        <segue destination="eMz-a5-jwP" kind="showDetail" identifier="CameraViewSegue" id="3g3-c3-5AC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
