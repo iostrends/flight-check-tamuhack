@@ -18,6 +18,7 @@
 		3464B0DE23DCE9AA00D649C3 /* FlightCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0DD23DCE9AA00D649C3 /* FlightCheckTests.swift */; };
 		3464B0E923DCE9AA00D649C3 /* FlightCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0E823DCE9AA00D649C3 /* FlightCheckUITests.swift */; };
 		3464B0F723DCFA9500D649C3 /* checkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0F623DCFA9500D649C3 /* checkCell.swift */; };
+		3464B0F923DD055A00D649C3 /* defaultList.js in Resources */ = {isa = PBXBuildFile; fileRef = 3464B0F823DD055900D649C3 /* defaultList.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		3464B0E823DCE9AA00D649C3 /* FlightCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightCheckUITests.swift; sourceTree = "<group>"; };
 		3464B0EA23DCE9AA00D649C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3464B0F623DCFA9500D649C3 /* checkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkCell.swift; sourceTree = "<group>"; };
+		3464B0F823DD055900D649C3 /* defaultList.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = defaultList.js; path = ../../defaultList.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				3464B0F623DCFA9500D649C3 /* checkCell.swift */,
 				3464B0CF23DCE9A900D649C3 /* Assets.xcassets */,
 				3464B0D123DCE9A900D649C3 /* LaunchScreen.storyboard */,
+				3464B0F823DD055900D649C3 /* defaultList.js */,
 				3464B0D423DCE9A900D649C3 /* Info.plist */,
 			);
 			path = FlightCheck;
@@ -243,6 +246,7 @@
 			files = (
 				3464B0D323DCE9A900D649C3 /* LaunchScreen.storyboard in Resources */,
 				3464B0D023DCE9A900D649C3 /* Assets.xcassets in Resources */,
+				3464B0F923DD055A00D649C3 /* defaultList.js in Resources */,
 				3464B0CE23DCE9A800D649C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
