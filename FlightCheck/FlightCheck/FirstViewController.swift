@@ -79,6 +79,15 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         present(addAlert, animated: true, completion: nil)
     }
     
+    // handle swipe to delete item in checklist
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            itemsToAdd.remove(at: indexPath.row)
+            checklistTableView.reloadData()
+        }
+    }
+    
     
     
     func initializeJS() {
