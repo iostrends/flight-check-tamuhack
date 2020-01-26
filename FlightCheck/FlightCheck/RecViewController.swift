@@ -12,11 +12,11 @@ class RecViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let defaults = UserDefaults.standard
+        print(defaults.object(forKey: "queryArray") as? [String] ?? [String]())
     }
     
     func showView(sender: AnyObject) {
-        print("adfsfas")
     }
 
 

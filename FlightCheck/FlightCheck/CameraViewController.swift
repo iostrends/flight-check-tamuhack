@@ -19,7 +19,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         // start up the camera
         let captureSession = AVCaptureSession()
-        captureSession.sessionPreset = .photo
+        // captureSession.sessionPreset = .photo
         
         guard let captureDevice = AVCaptureDevice.default(.builtInDualCamera,
         for: .video, position: .back) else { return }
