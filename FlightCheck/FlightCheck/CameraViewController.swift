@@ -71,6 +71,9 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             
             
         }
+        
+        let defaults = UserDefaults.standard
+        defaults.set(scannedItems, forKey: "ItemsScanned")
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
     
