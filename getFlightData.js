@@ -1,8 +1,11 @@
-
-
 function getFlightData(){
+    // var url = "https://flight-check.herokuapp.com/flights?date=2020-01-01"
+
     var req = new XMLHttpRequest();
-    var url = "https://flight-check.herokuapp.com/flights?date=2020-01-01";
+    var url = "https://flight-check.herokuapp.com/flights?date=2020-" 
+        + String.format("%02d", Date.getMonth())
+        + "-" + String.format("%02d", Date.getDate());
+
     req.open("GET", url);
     req.send();
     
@@ -12,6 +15,51 @@ function getFlightData(){
             console.log(req.responseText);
         }
     }
+}
+
+function findBannedCarryOnItems(carryOn) {
+    const carryOnBannedUppercase = ["AEROSOL INSECTICIDE", "AMMUNITION", "AMMO", "ELECTRONIC LIGHTERS", "AXES",
+                                    "HATCHETS", "BASEBALL BATS", "BEAR SPRAY", "BB GUNS", "BEAR SPRAY", 
+                                    "BOW AND ARROWS", "BOX CUTTERS", "BRASS KNUCKLES", "CAP GUNS", "CROWBARS",
+                                    "DARTS", "DYNAMITE", "FERTILIZER", "FIREARMS", "GUNS", "FIRECRACKERS",
+                                    "FLARES", "GASOLINE", "HAMMERS", "GRENADES", "KNIVES", "MEAT CLEAVERS",
+                                    "NUNCHUCKS", "WATER BOTTLE", "POCKET KNIFE", "RIFLE", "SAW", "MEMES"
+                                ];
+
+    let bannedUserItems = carryOn.filter(item => {
+        carryOnBannedUppercase.includes(item.toUpperCase());
+    });
+
+    return bannedUserItems;
+}
+
+function addWeatherItems(tempF, main, clouds, windSpeed) {
+    let output = [];
+
+    if(tempF < 45) {
+        output.push("Heavy jacket");
+    }
+    if(tempF >= 45 && tempF < 80) {
+        output.push("Light jacket");
+    }
+    if(tempF > 80) {
+        output.push("Swimsuit");
+        output.push("Flip flops");
+    }
+    if(main === "Rain") {
+        output.push("Rain jacket");
+        output.push("Rain boots");
+        output.push("Umbrella");
+    }
+    if(clouds.all < 40) {
+        output.push("Sunglasses");
+        output.push("Sunscreen");
+    }
+    if(windSpeed > 10) {
+        output.push("Windbreaker");
+    }
+
+    return output;
 }
 
 function getWeather(city){
@@ -35,7 +83,9 @@ function getWeather(city){
 
 function findFlight(flightNum){
     var req = new XMLHttpRequest();
-    var url = "https://flight-check.herokuapp.com/flights?date=2020-01-01"; // get all flights for 1/1
+    var url = "https://flight-check.herokuapp.com/flights?date=2020-" 
+        + String.format("%02d", Date.getMonth())
+        + "-" + String.format("%02d", Date.getDate());
     req.open("GET", url);
     req.send();
     
