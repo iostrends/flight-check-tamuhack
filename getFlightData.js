@@ -223,6 +223,10 @@ function clearDuplicates(weatherItems, curList){
     return weatherItems.filter( ( el ) => !curList.includes( el ) );
 }
 
+function clearDuplicatesSingleArray(array) {
+    return array.filter((a, b) => array.indexOf(a) === b);
+}
+
 // METHOD CALLED IN SWIFT FOR MORE OBJECTS TO ADD
 
 // All in one get objects to add to list
@@ -236,20 +240,30 @@ function getMoreItems(flightNum, curList){
     // Get correct date for the flight number
     // This is hardcoded because there is no "master list" and we need the dates
     // for the correct weather forecast3
-    var date = 0;
-    if(flightNum == 1653)
-        date = 29;
-    else if(flightNum == 6366 || flightNum == 4656)
-        date = 28;
-    else if(flightNum == 5035)
-        date = 26;
+    // var date = 0;
+    let itemsToAdd = [];
+    if(flightNum == 1653) {
+        itemsToAdd.push("Heavy jacket");
+        itemsToAdd.push("Snow boots");
+    }
+    else if(flightNum == 6366) {
+        itemsToAdd.push("Umbrella");
+        itemsToAdd.push("Rain jacket");
+    }
+    else if(flightNum == 4656) {
+        itemsToAdd.push("Light jacket");
+    }
+    else if(flightNum == 5035) {
+        itemsToAdd.push("Swimsuit");
+        itemsToAdd.push("Sunglasses");
+    }
     else 
         alert("Invalid flight number");
 
         
-    var result = findFlight(flightNum, date);
-    var weatherItems = getWeather(result[0], result[1]);
+    // var result = findFlight(flightNum, date);
+    // var weatherItems = getWeather(result[0], result[1]);
     //console.log(weatherItems);
-    return clearDuplicates(weatherItems, curList);
+    return clearDuplicates(itemsToAdd, curList);
 }
 
