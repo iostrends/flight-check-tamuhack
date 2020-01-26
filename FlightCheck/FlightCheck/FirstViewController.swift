@@ -31,6 +31,13 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         checklistTableView.rowHeight = 60
         initializeJS()
         
+        var button = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: self.view.frame.size.height - 140), size: CGSize(width: self.view.frame.size.width, height: 60)))
+        button.setTitle("Get Recommendations",for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.view.addSubview(button)
+        
         jsDemo1()
     }
     
