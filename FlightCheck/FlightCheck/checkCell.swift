@@ -12,6 +12,7 @@ class checkCell: UITableViewCell {
 
     @IBOutlet weak var checkLabel: UILabel!
     @IBOutlet weak var checkImage: UIImageView!
+    var isChecked = false
     
     override func awakeFromNib() {
         super.awakeFromNib()

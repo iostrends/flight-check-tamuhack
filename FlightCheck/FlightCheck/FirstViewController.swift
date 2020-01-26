@@ -11,6 +11,12 @@ import JavaScriptCore
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    // going to scan button segue
+    @IBAction func nextViewButtonPressed(_ sender: Any) {
+        print("Button Pressed")
+        self.performSegue(withIdentifier: "CameraViewSegue", sender: self)
+    }
+    
     // table view of list
     @IBOutlet weak var checklistTableView: UITableView!
     var jsContext: JSContext!
@@ -25,10 +31,20 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         checklistTableView.rowHeight = 60
         initializeJS()
         
+        var button = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: self.view.frame.size.height - 140), size: CGSize(width: self.view.frame.size.width, height: 60)))
+        button.setTitle("Get Recommendations",for: .normal)
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        button.addTarget(self, action: #selector(FirstViewController.switchView(sender:)), for: .touchUpInside)
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.view.addSubview(button)
+        
         jsDemo1()
     }
     
-    
+    @objc func switchView (sender: AnyObject) {
+        print("Switchview initiated")
+        self.performSegue(withIdentifier: "RecSegue", sender: self)
+    }
     
     // checklist sections
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,19 +56,53 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return itemsToAdd.count
     }
     
+    // handle creation of cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistItem", for: indexPath) as! checkCell
         cell.checkLabel.text = (itemsToAdd[indexPath.row] as! String)
-        
         return cell
     }
 
-
-
+    // handle clicking of cells
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! checkCell
+        
+        if cell.isChecked == false {
+            cell.checkImage.image = UIImage(systemName: "checkmark.circle")
+            cell.isChecked = true
+        } else {
+            cell.checkImage.image = nil
+            cell.isChecked = false
+        }
+    }
     
+    // handle addition of custom cells
+    @IBAction func addItem(_ sender: Any) {
+        let addAlert = UIAlertController(title: "Add new item", message: "Add your item!", preferredStyle: .alert)
+        
+        addAlert.addTextField()
+        let addAlertAction = UIAlertAction(title: "Add", style: .default) {(action) in
+            let newItem = addAlert.textFields![0]
+            self.itemsToAdd.append(newItem.text!)
+            self.checklistTableView.reloadData();
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        addAlert.addAction(addAlertAction)
+        addAlert.addAction(cancelAction)
+        
+        present(addAlert, animated: true, completion: nil)
+    }
     
-    
-    
+    // handle swipe to delete item in checklist
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            itemsToAdd.remove(at: indexPath.row)
+            checklistTableView.reloadData()
+        }
+    }
     
     
     
