@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1392AA1723DD08F900990354 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1392AA1623DD08F900990354 /* CameraViewController.swift */; };
 		3464B0C523DCE9A800D649C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0C423DCE9A800D649C3 /* AppDelegate.swift */; };
 		3464B0C723DCE9A800D649C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0C623DCE9A800D649C3 /* SceneDelegate.swift */; };
 		3464B0C923DCE9A800D649C3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0C823DCE9A800D649C3 /* FirstViewController.swift */; };
@@ -16,6 +17,8 @@
 		3464B0D323DCE9A900D649C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3464B0D123DCE9A900D649C3 /* LaunchScreen.storyboard */; };
 		3464B0DE23DCE9AA00D649C3 /* FlightCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0DD23DCE9AA00D649C3 /* FlightCheckTests.swift */; };
 		3464B0E923DCE9AA00D649C3 /* FlightCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0E823DCE9AA00D649C3 /* FlightCheckUITests.swift */; };
+		3464B0F723DCFA9500D649C3 /* checkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0F623DCFA9500D649C3 /* checkCell.swift */; };
+		3464B0F923DD055A00D649C3 /* defaultList.js in Resources */ = {isa = PBXBuildFile; fileRef = 3464B0F823DD055900D649C3 /* defaultList.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1392AA1623DD08F900990354 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		3464B0C123DCE9A800D649C3 /* FlightCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3464B0C423DCE9A800D649C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3464B0C623DCE9A800D649C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		3464B0E423DCE9AA00D649C3 /* FlightCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3464B0E823DCE9AA00D649C3 /* FlightCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightCheckUITests.swift; sourceTree = "<group>"; };
 		3464B0EA23DCE9AA00D649C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3464B0F623DCFA9500D649C3 /* checkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkCell.swift; sourceTree = "<group>"; };
+		3464B0F823DD055900D649C3 /* defaultList.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = defaultList.js; path = ../../defaultList.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,9 +111,12 @@
 				3464B0C623DCE9A800D649C3 /* SceneDelegate.swift */,
 				3464B0C823DCE9A800D649C3 /* FirstViewController.swift */,
 				3464B0CA23DCE9A800D649C3 /* SecondViewController.swift */,
+				1392AA1623DD08F900990354 /* CameraViewController.swift */,
 				3464B0CC23DCE9A800D649C3 /* Main.storyboard */,
+				3464B0F623DCFA9500D649C3 /* checkCell.swift */,
 				3464B0CF23DCE9A900D649C3 /* Assets.xcassets */,
 				3464B0D123DCE9A900D649C3 /* LaunchScreen.storyboard */,
+				3464B0F823DD055900D649C3 /* defaultList.js */,
 				3464B0D423DCE9A900D649C3 /* Info.plist */,
 			);
 			path = FlightCheck;
@@ -237,6 +246,7 @@
 			files = (
 				3464B0D323DCE9A900D649C3 /* LaunchScreen.storyboard in Resources */,
 				3464B0D023DCE9A900D649C3 /* Assets.xcassets in Resources */,
+				3464B0F923DD055A00D649C3 /* defaultList.js in Resources */,
 				3464B0CE23DCE9A800D649C3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,9 +273,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3464B0CB23DCE9A800D649C3 /* SecondViewController.swift in Sources */,
+				3464B0F723DCFA9500D649C3 /* checkCell.swift in Sources */,
 				3464B0C923DCE9A800D649C3 /* FirstViewController.swift in Sources */,
 				3464B0C523DCE9A800D649C3 /* AppDelegate.swift in Sources */,
 				3464B0C723DCE9A800D649C3 /* SceneDelegate.swift in Sources */,
+				1392AA1723DD08F900990354 /* CameraViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
