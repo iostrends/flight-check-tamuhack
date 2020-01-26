@@ -28,8 +28,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         jsDemo1()
     }
     
-    
-    
     // checklist sections
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -40,19 +38,46 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return itemsToAdd.count
     }
     
+    // handle creation of cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "checklistItem", for: indexPath) as! checkCell
         cell.checkLabel.text = (itemsToAdd[indexPath.row] as! String)
-        
         return cell
     }
 
-
-
+    // handle clicking of cells
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! checkCell
+        
+        if cell.isChecked == false {
+            cell.checkImage.image = UIImage(systemName: "checkmark.circle")
+            cell.checkImage.tintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+            cell.isChecked = true
+        } else {
+            cell.checkImage.image = UIImage(systemName: "minus.circle")
+            cell.checkImage.tintColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+            cell.isChecked = false
+        }
+    }
     
-    
-    
-    
+    // handle addition of custom cells
+    @IBAction func addItem(_ sender: Any) {
+        let addAlert = UIAlertController(title: "Add new item", message: "Add your item!", preferredStyle: .alert)
+        
+        addAlert.addTextField()
+        let addAlertAction = UIAlertAction(title: "Add", style: .default) {(action) in
+            let newItem = addAlert.textFields![0]
+            self.itemsToAdd.append(newItem.text!)
+            self.checklistTableView.reloadData();
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
+        addAlert.addAction(addAlertAction)
+        addAlert.addAction(cancelAction)
+        
+        present(addAlert, animated: true, completion: nil)
+    }
     
     
     
