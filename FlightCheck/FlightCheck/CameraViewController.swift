@@ -8,12 +8,14 @@
 
 import UIKit
 import AVKit
+import Vision
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print("View has loaded")
         
         // start up the camera
         let captureSession = AVCaptureSession()
@@ -31,6 +33,29 @@ class CameraViewController: UIViewController {
         
         // classify a frame
         previewLayer.frame = view.frame
+        
+        // access the camera data output
+        let dataOutput = AVCaptureVideoDataOutput()
+        dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
+        captureSession.addOutput(dataOutput)
+        
+        // start analyzing the camera
+        
+        //VNImageRequestHandler(cgImage: <#T##CGImage#>, options: [:]).perform(<#T##requests: [VNRequest]##[VNRequest]#>)
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        // print("Camera was able to capture a frame:", Date())
+        
+        guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        
+        // guard let model = try? VNCoreMLModel(for: YOLOv3TinyFP16().model) else { return }
+        guard let model = try? VNCoreMLModel(for: SqueezeNet().model) else { return }
+        let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
+            // check the errors
+            print(finishedReq.results)
+        }
+        try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
 
 

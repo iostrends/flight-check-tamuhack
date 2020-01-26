@@ -11,6 +11,12 @@ import JavaScriptCore
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    // going to scan button segue
+    @IBAction func nextViewButtonPressed(_ sender: Any) {
+        print("Button Pressed")
+        self.performSegue(withIdentifier: "CameraViewSegue", sender: self)
+    }
+    
     // table view of list
     @IBOutlet weak var checklistTableView: UITableView!
     var jsContext: JSContext!
