@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
-        <!--View Controller-->
+        <!--Camera View Controller-->
         <scene sceneID="7Jt-NG-Vb5">
             <objects>
-                <viewController id="eMz-a5-jwP" sceneMemberID="viewController">
+                <viewController id="eMz-a5-jwP" customClass="CameraViewController" customModule="FlightCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Mw-iu-g3f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
