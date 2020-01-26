@@ -14,9 +14,9 @@ function getFlightData(){
 }
 
 // Search for specific flight based on a flight number
-function findFlight(flightNum){
+function findFlight(flightNum, date){
     var req = new XMLHttpRequest();
-    var url = "https://flight-check.herokuapp.com/flights?date=2020-01-26"; // get all flights for 1/25
+    var url = "https://flight-check.herokuapp.com/flights?date=2020-01-" + date; // get all flights for 1/25
     
     var returnVal = [];
     
@@ -32,7 +32,7 @@ function findFlight(flightNum){
                 if(curFlight.flightNumber == flightNum){
                     const unixTimeZero = Date.parse(curFlight.arrivalTime); // Convert arrival time to Unix for easy comparison                   
                     var city = curFlight.destination.city;
-                    if(curFlight.destination.city == "Dallas-Fort Worth");
+                    if(curFlight.destination.city == "Dallas-Fort Worth")
                         city = "Dallas";
                     returnVal.push(city);
                     returnVal.push(unixTimeZero);
@@ -89,7 +89,7 @@ function findClosestTime(date, list){
 function addWeatherItems(weather){
     let output = [];
     
-    // console.log(weather.weather[0].main);
+    console.log(weather.weather[0].main);
     if(weather.weather[0].main == "Clouds"){
         output.push("umbrella");
     }
@@ -112,6 +112,7 @@ function getWeather(city, date){
             var list = obj.list;
             var weather_index = findClosestTime(date, list);
             var weather_items = addWeatherItems(list[weather_index]);
+            // console.log(req.response);
             returnVal= weather_items;
         }
     }
@@ -129,13 +130,28 @@ function clearDuplicates(weatherItems, curList){
 // METHOD CALLED IN SWIFT FOR MORE OBJECTS TO ADD
 
 // All in one get objects to add to list
-        // flightNumber - destination (1/26)
-        // 1452 - Chicago ("Clouds")
-        // 7545 - Dallas
-        // 9716 - NYC
-        // 5035 - Los Angeles
+        // flightNumber - destination
+        // 1653 (1/29) - Chicago ("Snow")
+        // 6366 (1/28) - Dallas ("Rain")
+        // 4656 (1/28) - NYC ("Clear")
+        // 5035 (1/26) - Los Angeles ("Clear")
 function getMoreItems(flightNum, curList){
-    var result = findFlight(flightNum); // searches for flight (1/26)
+    
+    // Get correct date for the flight number
+    // This is hardcoded because there is no "master list" and we need the dates
+    // for the correct weather forecast3
+    var date = 0;
+    if(flightNum == 1653)
+        date = 29;
+    else if(flightNum == 6366 || flightNum == 4656)
+        date = 28;
+    else if(flightNume == 5035)
+        date = 26;
+    else 
+        alert("Invalid flight number");
+
+        
+    var result = findFlight(flightNum, date);
     var weatherItems = getWeather(result[0], result[1]);
     return clearDuplicates(weatherItems, curList);
 }
