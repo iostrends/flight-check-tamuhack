@@ -10,6 +10,7 @@
 		1392AA1723DD08F900990354 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1392AA1623DD08F900990354 /* CameraViewController.swift */; };
 		1392AA1B23DD526600990354 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1392AA1A23DD526600990354 /* SqueezeNet.mlmodel */; };
 		1392AA1F23DD5F6000990354 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 1392AA1E23DD5F6000990354 /* Resnet50.mlmodel */; };
+		1392AA2B23DE00FF00990354 /* getFlightData.js in Resources */ = {isa = PBXBuildFile; fileRef = 1392AA2A23DE00FF00990354 /* getFlightData.js */; };
 		3464B0C523DCE9A800D649C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0C423DCE9A800D649C3 /* AppDelegate.swift */; };
 		3464B0C723DCE9A800D649C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0C623DCE9A800D649C3 /* SceneDelegate.swift */; };
 		3464B0C923DCE9A800D649C3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0C823DCE9A800D649C3 /* FirstViewController.swift */; };
@@ -44,6 +45,7 @@
 		1392AA1623DD08F900990354 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1392AA1A23DD526600990354 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 		1392AA1E23DD5F6000990354 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		1392AA2A23DE00FF00990354 /* getFlightData.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = getFlightData.js; path = ../../getFlightData.js; sourceTree = "<group>"; };
 		3464B0C123DCE9A800D649C3 /* FlightCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3464B0C423DCE9A800D649C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3464B0C623DCE9A800D649C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,14 +118,13 @@
 				3464B0C823DCE9A800D649C3 /* FirstViewController.swift */,
 				348511F123DD67E4009562B4 /* RecViewController.swift */,
 				1392AA1E23DD5F6000990354 /* Resnet50.mlmodel */,
-				1392AA1A23DD526600990354 /* SqueezeNet.mlmodel */,
 				1392AA1623DD08F900990354 /* CameraViewController.swift */,
 				3464B0F623DCFA9500D649C3 /* checkCell.swift */,
+				1392AA2A23DE00FF00990354 /* getFlightData.js */,
 				3464B0CC23DCE9A800D649C3 /* Main.storyboard */,
 				3464B0D123DCE9A900D649C3 /* LaunchScreen.storyboard */,
 				3464B0F823DD055900D649C3 /* defaultList.js */,
 				3464B0D423DCE9A900D649C3 /* Info.plist */,
-				1392AA1823DD50AD00990354 /* YOLOv3TinyFP16.mlmodel */,
 				1392AA1A23DD526600990354 /* SqueezeNet.mlmodel */,
 				3464B0CF23DCE9A900D649C3 /* Assets.xcassets */,
 			);
@@ -254,6 +255,7 @@
 			files = (
 				3464B0D323DCE9A900D649C3 /* LaunchScreen.storyboard in Resources */,
 				3464B0D023DCE9A900D649C3 /* Assets.xcassets in Resources */,
+				1392AA2B23DE00FF00990354 /* getFlightData.js in Resources */,
 				3464B0F923DD055A00D649C3 /* defaultList.js in Resources */,
 				3464B0CE23DCE9A800D649C3 /* Main.storyboard in Resources */,
 			);
