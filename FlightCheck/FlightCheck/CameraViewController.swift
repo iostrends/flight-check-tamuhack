@@ -44,19 +44,36 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         //VNImageRequestHandler(cgImage: <#T##CGImage#>, options: [:]).perform(<#T##requests: [VNRequest]##[VNRequest]#>)
     }
     
+    // creating an array to store items
+    var scannedItems = [String]()
+    
+    // generated every frame
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         // print("Camera was able to capture a frame:", Date())
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
-        // guard let model = try? VNCoreMLModel(for: YOLOv3TinyFP16().model) else { return }
-        guard let model = try? VNCoreMLModel(for: SqueezeNet().model) else { return }
+
+        // guard let model = try? VNCoreMLModel(for: SqueezeNet().model) else { return }
+        guard let model = try? VNCoreMLModel(for: Resnet50().model) else { return }
         let request = VNCoreMLRequest(model: model) { (finishedReq, err) in
-            // check the errors
-            print(finishedReq.results)
+        
+            
+            // cast results to an array
+            guard let results = finishedReq.results as? [VNClassificationObservation] else { return }
+            guard let firstObservation = results.first else { return }
+            print(firstObservation.identifier, firstObservation.confidence)
+            // append the results only if confidence is high
+            if (firstObservation.confidence >= 0.5) {
+                self.scannedItems.append(firstObservation.identifier)
+            }
+            
+            
+            
         }
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
+    
 
 
 }
