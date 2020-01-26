@@ -13,7 +13,8 @@ class RecViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let defaults = UserDefaults.standard
-        print(defaults.object(forKey: "queryArray") as? [String] ?? [String]())
+        let importedArray = defaults.object(forKey: "queryArray") as? [String] ?? [String]()
+        print(importedArray)
     }
     
     func showView(sender: AnyObject) {
