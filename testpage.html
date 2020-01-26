@@ -15,10 +15,26 @@
     <h3 id="head"></h3>
     <p id="data"></p>
     <p id="data2"></p>
+    <p id="data3"></p>
     <script src="getFlightData.js"></script>
-    <script src="getWeather.js"></script>
-    <script>getWeather("Chicago")</script>
+    <!-- <script src="getWeather.js"></script> -->
+    <!-- <script>
+        // var result = findFlight(7792); // searches for flight (1/25)
+        
+        // flightNumber - destination (1/26)
+        // 1452 - Chicago
+        // 7545 - Dallas
+        // 9716 - NYC
+        // 5035 - Los Angeles
+        var result = findFlight(1452); // searches for flight (1/26)
+        var weatherItems = getWeather(result[0], result[1]);
+        console.log(weatherItems);
+
+    </script> -->
+    <script>
+        getMoreItems(1452, []);
+    </script>
+    <script></script>
     <!-- <script>getFlightData()</script> -->
-    <!-- <script>findFlight(4858);</script> -->
   </body>
 </html>
