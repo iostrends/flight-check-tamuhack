@@ -85,15 +85,16 @@ function findClosestTime(date, list){
     
 }
 
+// Returns a list of suggested items to add based on the weather based on the destination
 function addWeatherItems(weather){
     let output = [];
     
-    console.log(weather.weather[0].main);
+    // console.log(weather.weather[0].main);
     if(weather.weather[0].main == "Clouds"){
         output.push("umbrella");
     }
 
-    console.log(output);
+    // console.log(output);
     return output;
 }
 
@@ -110,30 +111,32 @@ function getWeather(city, date){
             var obj = JSON.parse(req.responseText);
             var list = obj.list;
             var weather_index = findClosestTime(date, list);
-            console.log(weather_index);
-            console.log("hi");
-            console.log(list[weather_index]);
             var weather_items = addWeatherItems(list[weather_index]);
-            console.log(weather_items);
             returnVal= weather_items;
         }
     }
 
     req.open("GET", url, false);
     req.send();
+    
     return returnVal;
 }
 
+function clearDuplicates(weatherItems, curList){
+    return curList.filter( ( el ) => !weatherItems.includes( el ) );
+}
+
 // METHOD CALLED IN SWIFT FOR MORE OBJECTS TO ADD
+
 // All in one get objects to add to list
         // flightNumber - destination (1/26)
-        // 1452 - Chicago
+        // 1452 - Chicago ("Clouds")
         // 7545 - Dallas
         // 9716 - NYC
         // 5035 - Los Angeles
 function getMoreItems(flightNum, curList){
     var result = findFlight(flightNum); // searches for flight (1/26)
     var weatherItems = getWeather(result[0], result[1]);
-    return weatherItems;
+    return clearDuplicates(weatherItems, curList);
 }
 
