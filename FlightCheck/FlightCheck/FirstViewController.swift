@@ -22,6 +22,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var jsContext: JSContext!
     
     var itemsToAdd: [Any] = ["Jacket", "Toothbrush"]
+    var packedItems: [Any] = []
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +31,9 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         checklistTableView.delegate = self
         checklistTableView.dataSource = self
         checklistTableView.rowHeight = 60
-        initializeJS()
+//        initializeJS()
+        
+        defaults.set(nil, forKey: "queryArray")
         
         var button = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: self.view.frame.size.height - 140), size: CGSize(width: self.view.frame.size.width, height: 60)))
         button.setTitle("Get Recommendations",for: .normal)
@@ -38,12 +42,20 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.view.addSubview(button)
         
-        jsDemo1()
+//        jsDemo1()
     }
     
+    // swith to rec view
     @objc func switchView (sender: AnyObject) {
         print("Switchview initiated")
+        let scannedList = defaults.object(forKey: "ItemsScanned") as? [String] ?? [String]()
+        for item in scannedList {
+            packedItems.append(item)
+        }
+        
+        defaults.set(packedItems, forKey: "queryArray")
         self.performSegue(withIdentifier: "RecSegue", sender: self)
+        
     }
     
     // checklist sections
@@ -70,9 +82,19 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if cell.isChecked == false {
             cell.checkImage.image = UIImage(systemName: "checkmark.circle")
             cell.isChecked = true
+            packedItems.append(cell.checkLabel.text!)
         } else {
             cell.checkImage.image = nil
             cell.isChecked = false
+            // delete matching val
+            print(cell.checkLabel.text!)
+            
+//            for item in packedItems {
+//                if item == str {
+//                    print("found it")
+//                }
+//            }
+            
         }
     }
     
@@ -103,8 +125,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
             checklistTableView.reloadData()
         }
     }
-    
-    
     
     func initializeJS() {
         self.jsContext = JSContext()
