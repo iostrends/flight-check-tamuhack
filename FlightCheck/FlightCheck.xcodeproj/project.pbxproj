@@ -20,6 +20,7 @@
 		3464B0E923DCE9AA00D649C3 /* FlightCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0E823DCE9AA00D649C3 /* FlightCheckUITests.swift */; };
 		3464B0F723DCFA9500D649C3 /* checkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3464B0F623DCFA9500D649C3 /* checkCell.swift */; };
 		3464B0F923DD055A00D649C3 /* defaultList.js in Resources */ = {isa = PBXBuildFile; fileRef = 3464B0F823DD055900D649C3 /* defaultList.js */; };
+		348511F223DD67E4009562B4 /* RecViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348511F123DD67E4009562B4 /* RecViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		3464B0EA23DCE9AA00D649C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3464B0F623DCFA9500D649C3 /* checkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkCell.swift; sourceTree = "<group>"; };
 		3464B0F823DD055900D649C3 /* defaultList.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = defaultList.js; path = ../../defaultList.js; sourceTree = "<group>"; };
+		348511F123DD67E4009562B4 /* RecViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,15 +114,18 @@
 				3464B0C423DCE9A800D649C3 /* AppDelegate.swift */,
 				3464B0C623DCE9A800D649C3 /* SceneDelegate.swift */,
 				3464B0C823DCE9A800D649C3 /* FirstViewController.swift */,
+				348511F123DD67E4009562B4 /* RecViewController.swift */,
 				1392AA1E23DD5F6000990354 /* Resnet50.mlmodel */,
 				1392AA1A23DD526600990354 /* SqueezeNet.mlmodel */,
 				1392AA1623DD08F900990354 /* CameraViewController.swift */,
-				3464B0CC23DCE9A800D649C3 /* Main.storyboard */,
 				3464B0F623DCFA9500D649C3 /* checkCell.swift */,
-				3464B0CF23DCE9A900D649C3 /* Assets.xcassets */,
+				3464B0CC23DCE9A800D649C3 /* Main.storyboard */,
 				3464B0D123DCE9A900D649C3 /* LaunchScreen.storyboard */,
 				3464B0F823DD055900D649C3 /* defaultList.js */,
 				3464B0D423DCE9A900D649C3 /* Info.plist */,
+				1392AA1823DD50AD00990354 /* YOLOv3TinyFP16.mlmodel */,
+				1392AA1A23DD526600990354 /* SqueezeNet.mlmodel */,
+				3464B0CF23DCE9A900D649C3 /* Assets.xcassets */,
 			);
 			path = FlightCheck;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 			files = (
 				3464B0F723DCFA9500D649C3 /* checkCell.swift in Sources */,
 				3464B0C923DCE9A800D649C3 /* FirstViewController.swift in Sources */,
+				348511F223DD67E4009562B4 /* RecViewController.swift in Sources */,
 				1392AA1B23DD526600990354 /* SqueezeNet.mlmodel in Sources */,
 				3464B0C523DCE9A800D649C3 /* AppDelegate.swift in Sources */,
 				3464B0C723DCE9A800D649C3 /* SceneDelegate.swift in Sources */,

@@ -34,11 +34,16 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         var button = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: self.view.frame.size.height - 140), size: CGSize(width: self.view.frame.size.width, height: 60)))
         button.setTitle("Get Recommendations",for: .normal)
         button.backgroundColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-        
+        button.addTarget(self, action: #selector(FirstViewController.switchView(sender:)), for: .touchUpInside)
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController?.view.addSubview(button)
         
         jsDemo1()
+    }
+    
+    @objc func switchView (sender: AnyObject) {
+        print("Switchview initiated")
+        self.performSegue(withIdentifier: "RecSegue", sender: self)
     }
     
     // checklist sections
