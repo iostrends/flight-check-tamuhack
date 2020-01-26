@@ -82,7 +82,7 @@ function getWeather(city){
     // xhr.send(data);
 }
 
-function findFlight(flightNum){
+function findFlight(flightNum, date){
     var req = new XMLHttpRequest();
     var url = "https://flight-check.herokuapp.com/flights?date=2020-01-" + date;
     req.open("GET", url);
@@ -158,13 +158,39 @@ function findClosestTime(date, list){
 // Returns a list of suggested items to add based on the weather based on the destination
 function addWeatherItems(weather){
     let output = [];
-    
+    let tempF = (weather.main.temp - 273.15) * (9*1.0/5) + 32;
+
     console.log(weather.weather[0].main);
-    if(weather.weather[0].main == "Clouds"){
-        output.push("umbrella");
+    if(weather.weather[0].main === "Rain"){
+        console.log("it gon rain");
+        output.push("Rain jacket");
+        output.push("Rain boots");
+        output.push("Umbrella");
+    }
+    if(tempF < 45) {
+        console.log("it cold");
+        output.push("Heavy jacket");
+    }
+    if(tempF >= 45 && tempF < 80) {
+        console.log("it cool");
+        output.push("Light jacket");
+    }
+    if(tempF > 80) {
+        console.log("it hot")
+        output.push("Swimsuit");
+        output.push("Flip flops");
+    }
+    if(weather.clouds.all < 40) {
+        console.log("it sunny")
+        output.push("Sunglasses");
+        output.push("Sunscreen");
+    }
+    if(weather.wind.speed > 10) {
+        console.log("it windy");
+        output.push("Windbreaker");
     }
 
-    // console.log(output);
+    //console.log(output);
     return output;
 }
 
@@ -194,7 +220,7 @@ function getWeather(city, date){
 }
 
 function clearDuplicates(weatherItems, curList){
-    return curList.filter( ( el ) => !weatherItems.includes( el ) );
+    return weatherItems.filter( ( el ) => !curList.includes( el ) );
 }
 
 // METHOD CALLED IN SWIFT FOR MORE OBJECTS TO ADD
@@ -215,7 +241,7 @@ function getMoreItems(flightNum, curList){
         date = 29;
     else if(flightNum == 6366 || flightNum == 4656)
         date = 28;
-    else if(flightNume == 5035)
+    else if(flightNum == 5035)
         date = 26;
     else 
         alert("Invalid flight number");
@@ -223,6 +249,7 @@ function getMoreItems(flightNum, curList){
         
     var result = findFlight(flightNum, date);
     var weatherItems = getWeather(result[0], result[1]);
+    //console.log(weatherItems);
     return clearDuplicates(weatherItems, curList);
 }
 
