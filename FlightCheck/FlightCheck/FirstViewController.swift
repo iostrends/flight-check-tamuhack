@@ -30,10 +30,11 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
         checklistTableView.delegate = self
         checklistTableView.dataSource = self
-        checklistTableView.rowHeight = 60
+        checklistTableView.rowHeight = 45
 //        initializeJS()
         
         defaults.set(nil, forKey: "queryArray")
+        defaults.set(nil, forKey: "ItemsScanned")
         
         var button = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: self.view.frame.size.height - 140), size: CGSize(width: self.view.frame.size.width, height: 60)))
         button.setTitle("Get Recommendations",for: .normal)
@@ -55,7 +56,6 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         defaults.set(packedItems, forKey: "queryArray")
         self.performSegue(withIdentifier: "RecSegue", sender: self)
-        
     }
     
     // checklist sections

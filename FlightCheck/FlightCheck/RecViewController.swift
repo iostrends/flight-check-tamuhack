@@ -11,7 +11,12 @@ import JavaScriptCore
 
 class RecViewController: UIViewController {
     
+    @IBOutlet weak var toBringLabel: UILabel!
+    @IBOutlet weak var recStatus: UILabel!
+    
+    
     var jsContext: JSContext!
+    
     
     func initializeJS() {
         self.jsContext = JSContext()
@@ -32,10 +37,34 @@ class RecViewController: UIViewController {
     }
     
     func getWeatherItems() {
+        let defaults = UserDefaults.standard
+        let importedArray = defaults.object(forKey: "queryArray") as? [String] ?? [String]()
+        
         if let functionFullname = self.jsContext.objectForKeyedSubscript("getMoreItems") {
-            if let res = functionFullname.call(withArguments: [1653, ["HI"]]) {
+            if let res = functionFullname.call(withArguments: [1653, importedArray]) {
                 let itemsToAdd = res.toArray()
-                print(itemsToAdd)
+                print(itemsToAdd!)
+                
+                if(itemsToAdd!.count == 0) {
+                    self.view.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+                    recStatus.text = "You're all set!"
+                    toBringLabel.text = ""
+                    
+                } else {
+                    recStatus.text = "You may want to bring these items:"
+                    
+                    var toRec = ""
+                    
+                    for item in itemsToAdd! {
+                        toRec += item as! String
+                        toRec += "     "
+                    }
+                    
+                    toBringLabel.text = toRec
+                    self.view.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+                }
+                
+                
             }
         }
     }
@@ -46,10 +75,9 @@ class RecViewController: UIViewController {
         initializeJS();
         getWeatherItems();
         let importedArray = defaults.object(forKey: "queryArray") as? [String] ?? [String]()
-        print(importedArray)
-        defaults.set(nil, forKey: "queryArray")
+//        print(importedArray)
         
-        self.view.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        defaults.set(nil, forKey: "queryArray")
     }
     
     func showView(sender: AnyObject) {
